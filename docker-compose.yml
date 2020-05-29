@@ -1,0 +1,32 @@
+version: "3"
+services:
+  tic:
+    build:
+      context: track-info-consumer/
+    volumes:
+      - /d/my_doc/mymus_db:/mymus_db
+
+    networks:
+      musorg-bridge:
+        ipv4_address: 10.5.0.5
+
+  tiw:
+    build:
+      context: track-info-web-helper/
+    volumes:
+      - /d/my_doc/mymus_db:/mymus_db
+    networks:
+      musorg-bridge:
+        ipv4_address: 10.5.0.6
+
+    environment:
+      - TIC_ADDRESS=10.5.0.5
+    ports:
+      - 8082:8082
+
+networks:
+  musorg-bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
