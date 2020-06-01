@@ -50,6 +50,18 @@ public class AppLogic {
             return result;
         }
 
+        splitStr = StringUtils.split(rawTrackInfo, "—");
+
+        if (splitStr.length == 2) {
+            splitStr[0] = StringUtils.trim(splitStr[0]);
+            splitStr[1] = StringUtils.trim(splitStr[1]);
+
+            ParseTrackInfoResult result = new ParseTrackInfoResult(splitStr[0], splitStr[1], "OK");
+            log.info("parsed:{}", result);
+            return result;
+        }
+
+
         return new ParseTrackInfoResult(null, null, "ERROR");
     }
 
