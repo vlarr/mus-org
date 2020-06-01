@@ -9,7 +9,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
@@ -64,11 +63,35 @@ public class AppLogicTest {
         assertEquals("OK", result.getStatus());
 
         //given, when
+        result = logic.tryParseTrackInfo("test1 — test2");
+        //then
+        assertNotNull(result);
+        assertEquals("test1", result.getArtist());
+        assertEquals("test2", result.getTitle());
+        assertEquals("OK", result.getStatus());
+
+        //given, when
+        result = logic.tryParseTrackInfo("test1 - test2 - test3");
+        //then
+        assertNotNull(result);
+        assertNull(result.getArtist());
+        assertNull(result.getTitle());
+        assertEquals("ERROR", result.getStatus());
+
+        //given, when
+        result = logic.tryParseTrackInfo("test1");
+        //then
+        assertNotNull(result);
+        assertNull(result.getArtist());
+        assertNull(result.getTitle());
+        assertEquals("ERROR", result.getStatus());
+
+        //given, when
         result = logic.tryParseTrackInfo("  ");
         //then
         assertNotNull(result);
-        assertNull( result.getArtist());
-        assertNull( result.getTitle());
+        assertNull(result.getArtist());
+        assertNull(result.getTitle());
         assertEquals("ERROR", result.getStatus());
     }
 
