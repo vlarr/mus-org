@@ -22,7 +22,7 @@ public class TrackSourceDao {
         this.myMusJdbcTemplate = myMusJdbcTemplate;
     }
 
-    @Cacheable("trackSource")
+    @Cacheable("TrackSourceDao.findIdByName")
     public Long findIdByName(String name) {
         return myMusJdbcTemplate.query(SQL_SELECT_TRACK_SOURCE,
                 new Object[]{name},
