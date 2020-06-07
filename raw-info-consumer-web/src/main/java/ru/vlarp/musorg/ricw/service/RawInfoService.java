@@ -1,10 +1,10 @@
-package ru.vlarp.musorg.tic.logic;
+package ru.vlarp.musorg.ricw.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
@@ -19,9 +19,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component
-public class AppLogic {
-    private static final Logger log = LoggerFactory.getLogger(AppLogic.class);
+@Service
+public class RawInfoService {
+    private static final Logger log = LoggerFactory.getLogger(RawInfoService.class);
 
     private TrackSourceDao trackSourceDao;
     private RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao;
