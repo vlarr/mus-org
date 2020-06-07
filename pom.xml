@@ -12,8 +12,6 @@
     <modules>
         <module>commons</module>
         <module>file-loader-v2</module>
-        <module>track-info-web-helper</module>
-        <module>track-info-consumer</module>
         <module>raw-info-consumer-web</module>
     </modules>
 
