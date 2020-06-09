@@ -1,4 +1,4 @@
-package ru.vlarp.musorg.ricw.service;
+package ru.vlarp.musorg.commons.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -58,7 +58,7 @@ public class RawInfoService {
         for (TrackInfo trackInfo : trackInfoList) {
             log.info("track info: {}", trackInfo);
 
-            if (!trackInfo.checkAllNotNull()) {
+            if (trackInfo.isAnyEmpty()) {
                 results.add(false);
                 continue;
             }
@@ -79,6 +79,7 @@ public class RawInfoService {
                             .builder()
                             .artist(trackInfo.getArtist())
                             .title(trackInfo.getTitle())
+                            .album(trackInfo.getAlbum())
                             .trackSourceId(entry.getValue())
                             .creationTime(timeStamp)
                             .build();

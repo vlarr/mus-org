@@ -10,6 +10,7 @@ import lombok.*;
 public class RawPlaylistTrackInfo {
     private String artist;
     private String title;
+    private String album;
     private Long trackSourceId;
     private Long creationTime;
 }

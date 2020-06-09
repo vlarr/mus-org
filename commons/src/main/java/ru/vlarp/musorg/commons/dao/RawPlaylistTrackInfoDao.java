@@ -14,7 +14,7 @@ import java.util.List;
 public class RawPlaylistTrackInfoDao {
     private static final Logger log = LoggerFactory.getLogger(RawPlaylistTrackInfoDao.class);
 
-    private static final String SQL_INSERT_TRACK_INFO = "INSERT INTO R_TRACKS_STG(ARTIST, TITLE, TRACK_SOURCE_ID, CREATION_TIME) VALUES (?,?,?,?)";
+    private static final String SQL_INSERT_TRACK_INFO = "INSERT INTO R_TRACKS_STG(ARTIST, TITLE, TRACK_SOURCE_ID, CREATION_TIME, ALBUM) VALUES (?,?,?,?,?)";
     private static final String SQL_SELECT_LAST_TRACKS = "SELECT * FROM R_TRACKS_STG ORDER BY CREATION_TIME DESC LIMIT ?";
 
     private JdbcTemplate mainJbcTemplate;
@@ -31,8 +31,8 @@ public class RawPlaylistTrackInfoDao {
     }
 
     public void saveToStaging(RawPlaylistTrackInfo trackInfo) {
-        log.info("saveToStaging: {}, {}, {}, {}", trackInfo.getArtist(), trackInfo.getTitle(), trackInfo.getTrackSourceId(), trackInfo.getCreationTime());
-        mainJbcTemplate.update(SQL_INSERT_TRACK_INFO, trackInfo.getArtist(), trackInfo.getTitle(), trackInfo.getTrackSourceId(), trackInfo.getCreationTime());
+        log.info("saveToStaging: {}", trackInfo);
+        mainJbcTemplate.update(SQL_INSERT_TRACK_INFO, trackInfo.getArtist(), trackInfo.getTitle(), trackInfo.getTrackSourceId(), trackInfo.getCreationTime(), trackInfo.getAlbum());
     }
 
     public List<RawPlaylistTrackInfo> findLastByLimit(Integer trackLimit) {
@@ -44,6 +44,7 @@ public class RawPlaylistTrackInfoDao {
             result.setTitle(resultSet.getString("TITLE"));
             result.setTrackSourceId(resultSet.getLong("TRACK_SOURCE_ID"));
             result.setCreationTime(resultSet.getLong("CREATION_TIME"));
+            result.setAlbum(resultSet.getString("ALBUM"));
             return result;
         });
     }

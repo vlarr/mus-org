@@ -12,7 +12,7 @@ import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
 import ru.vlarp.musorg.commons.pojo.RawPlaylistTrackInfo;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
-import ru.vlarp.musorg.ricw.service.RawInfoService;
+import ru.vlarp.musorg.commons.service.RawInfoService;
 
 import java.util.List;
 

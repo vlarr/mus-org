@@ -12,16 +12,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.vlarp.musorg.ricw</groupId>
-    <artifactId>raw-info-consumer-web</artifactId>
-    <name>raw-info-consumer-web</name>
+    <groupId>ru.vlarp.musorg.dip</groupId>
+    <artifactId>deezer-info-parser</artifactId>
+    <name>deezer-info-parser</name>
     <version>1.0-SNAPSHOT</version>
-
-    <packaging>jar</packaging>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -74,7 +68,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.9</version>
         </dependency>
 
         <dependency>
@@ -88,6 +81,11 @@
             <artifactId>spring-jdbc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -106,5 +104,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
