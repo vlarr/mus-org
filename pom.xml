@@ -13,6 +13,9 @@
         <module>commons</module>
         <module>file-loader-v2</module>
         <module>raw-info-consumer-web</module>
+        <module>deezer-info-parser</module>
+        <module>raw-track-info-consumer</module>
+        <module>raw-track-info-web-helper</module>
     </modules>
 
     <properties>
