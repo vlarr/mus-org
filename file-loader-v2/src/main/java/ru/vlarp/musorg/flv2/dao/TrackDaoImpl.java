@@ -8,7 +8,7 @@ import ru.vlarp.musorg.flv2.dto.Track;
 
 @Component
 public class TrackDaoImpl implements TrackDao {
-    private static final String INSERT_TRACK = "INSERT INTO R_TRACKS_STG(ARTIST, TITLE, TRACK_SOURCE_ID, CREATION_TIME) VALUES (?,?,?,?)";
+    private static final String INSERT_TRACK = "INSERT INTO R_TRACKS(ARTIST, TITLE, TRACK_SOURCE_ID, CREATION_TIME) VALUES (?,?,?,?)";
 
     private JdbcTemplate tJdbcTemplate;
 
