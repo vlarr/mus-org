@@ -1,17 +1,17 @@
 version: "3"
 services:
-  tic:
+  rtic:
     build:
-      context: track-info-consumer/
+      context: raw-track-info-consumer/
     volumes:
       - /d/my_doc/mymus_db:/mymus_db
     networks:
       musorg-bridge:
         ipv4_address: 10.5.0.5
 
-  tiw:
+  rtiwh:
     build:
-      context: track-info-web-helper/
+      context: raw-track-info-web-helper/
     volumes:
       - /d/my_doc/mymus_db:/mymus_db
     networks:
@@ -20,7 +20,7 @@ services:
     environment:
       - TIC_ADDRESS=10.5.0.5
     ports:
-      - 8082:8082
+      - 8082:8080
 
   ricw:
     build:
@@ -33,6 +33,16 @@ services:
     ports:
       - 8083:8080
 
+  dip:
+    build:
+      context: deezer-info-parser/
+    volumes:
+      - /d/my_doc/mymus_db:/mymus_db
+    networks:
+      musorg-bridge:
+        ipv4_address: 10.5.0.8
+    ports:
+      - 8084:8080
 
 networks:
   musorg-bridge:
