@@ -31,10 +31,6 @@ public class AppController {
     public String grabDeezerPlaylist(@RequestParam Long playlistId, @RequestParam(required = false) String playlistName) {
         log.info("call grabDeezerPlaylist, playlistId={}, playlistName={}", playlistId, playlistName);
 
-//        if (playlistId == null) {
-//            playlistId = 6748155604L;
-//        }
-
         if (playlistName == null) {
             playlistName = "DEEZER_MISC";
         }
