@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
+import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawPlaylistTrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrack;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
 
 import java.time.Instant;
@@ -24,7 +24,8 @@ public class RawInfoService {
     private static final Logger log = LoggerFactory.getLogger(RawInfoService.class);
 
     private TrackSourceDao trackSourceDao;
-    private RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao;
+
+    private RawTrackDao rawTrackDao;
 
     @Autowired
     public void setTrackSourceDao(TrackSourceDao trackSourceDao) {
@@ -32,8 +33,8 @@ public class RawInfoService {
     }
 
     @Autowired
-    public void setRawTrackInfoDao(RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao) {
-        this.rawPlaylistTrackInfoDao = rawPlaylistTrackInfoDao;
+    public void setRawTrackDao(RawTrackDao rawTrackDao) {
+        this.rawTrackDao = rawTrackDao;
     }
 
     public ParseTrackInfoResult tryParseTrackInfo(String rawTrackInfo) {
@@ -75,7 +76,7 @@ public class RawInfoService {
             for (Map.Entry<String, Long> entry : sources.entrySet()) {
                 if (entry.getValue() != null) {
 
-                    RawPlaylistTrackInfo rawPlaylistTrackInfo = RawPlaylistTrackInfo
+                    RawTrack rawPlaylistTrackInfo = RawTrack
                             .builder()
                             .artist(trackInfo.getArtist())
                             .title(trackInfo.getTitle())
@@ -84,7 +85,7 @@ public class RawInfoService {
                             .creationTime(timeStamp)
                             .build();
 
-                    rawPlaylistTrackInfoDao.saveToStaging(rawPlaylistTrackInfo);
+                    rawTrackDao.save(rawPlaylistTrackInfo);
                     trackSourceDao.updateLastModifiedTime(entry.getValue(), timeStamp);
                 } else {
                     log.warn("not find source: {}", entry.getKey());

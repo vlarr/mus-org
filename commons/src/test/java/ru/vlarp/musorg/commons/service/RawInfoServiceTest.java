@@ -11,10 +11,10 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
+import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawPlaylistTrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrack;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
 
 import java.util.Collections;
@@ -30,7 +30,7 @@ public class RawInfoServiceTest {
         public TrackSourceDao trackSourceDao;
 
         @MockBean
-        public RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao;
+        public RawTrackDao rawTrackDao;
 
         @Bean
         public RawInfoService rawInfoService() {
@@ -42,14 +42,14 @@ public class RawInfoServiceTest {
     public TrackSourceDao trackSourceDao;
 
     @Autowired
-    public RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao;
+    public RawTrackDao rawTrackDao;
 
     @Autowired
     private RawInfoService rawInfoService;
 
     @Before
     public void setUp() {
-        Mockito.reset(trackSourceDao, rawPlaylistTrackInfoDao);
+        Mockito.reset(trackSourceDao, rawTrackDao);
     }
 
 
@@ -108,10 +108,10 @@ public class RawInfoServiceTest {
         rawInfoService.consumeTrackInfos(Collections.singletonList(trackInfo));
 
         //then
-        ArgumentCaptor<RawPlaylistTrackInfo> argumentCaptor = ArgumentCaptor.forClass(RawPlaylistTrackInfo.class);
-        Mockito.verify(rawPlaylistTrackInfoDao, Mockito.times(2)).saveToStaging(argumentCaptor.capture());
+        ArgumentCaptor<RawTrack> argumentCaptor = ArgumentCaptor.forClass(RawTrack.class);
+        Mockito.verify(rawTrackDao, Mockito.times(2)).save(argumentCaptor.capture());
 
-        List<RawPlaylistTrackInfo> capturedRawPlaylistTrackInfo = argumentCaptor.getAllValues();
+        List<RawTrack> capturedRawPlaylistTrackInfo = argumentCaptor.getAllValues();
 
         assertEquals(2, capturedRawPlaylistTrackInfo.size());
 
