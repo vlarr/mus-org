@@ -5,16 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
-import ru.vlarp.musorg.commons.dao.RawPlaylistTrackInfoDao;
+import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawPlaylistTrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrack;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class AppController {
 
     private RestTemplateBuilder restTemplateBuilder;
 
-    private RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao;
+    private RawTrackDao rawTrackDao;
 
     @Autowired
     public void setRestTemplateBuilder(RestTemplateBuilder restTemplateBuilder) {
@@ -39,8 +38,8 @@ public class AppController {
     }
 
     @Autowired
-    public void setRawPlaylistTrackInfoDao(RawPlaylistTrackInfoDao rawPlaylistTrackInfoDao) {
-        this.rawPlaylistTrackInfoDao = rawPlaylistTrackInfoDao;
+    public void setRawTrackDao(RawTrackDao rawTrackDao) {
+        this.rawTrackDao = rawTrackDao;
     }
 
     @PostMapping(path = "/consumeRawTrackInfo", consumes = "text/plain", produces = "application/json")
@@ -70,8 +69,10 @@ public class AppController {
     }
 
     @PostMapping(path = "/lastTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<RawPlaylistTrackInfo>> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
+    public ResponseEntity<List<RawTrack>> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
         log.info("call lastTrackInfos. trackLimit={}", trackLimit);
-        return ResponseEntity.ok(rawPlaylistTrackInfoDao.findLastByLimit(trackLimit));
+
+        //todo убрать прямое чтение
+        return ResponseEntity.ok(rawTrackDao.findLast(trackLimit));
     }
 }
