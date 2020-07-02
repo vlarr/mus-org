@@ -4,7 +4,7 @@ services:
     build:
       context: raw-track-info-consumer/
     volumes:
-      - /d/my_doc/mymus_db:/mymus_db
+      - ./local/sqlite_db:/sqlite_db
     networks:
       musorg-bridge:
         ipv4_address: 10.5.0.5
@@ -13,7 +13,7 @@ services:
     build:
       context: raw-track-info-web-helper/
     volumes:
-      - /d/my_doc/mymus_db:/mymus_db
+      - ./local/sqlite_db:/sqlite_db
     networks:
       musorg-bridge:
         ipv4_address: 10.5.0.6
@@ -26,7 +26,7 @@ services:
     build:
       context: deezer-info-parser/
     volumes:
-      - /d/my_doc/mymus_db:/mymus_db
+      - ./local/sqlite_db:/sqlite_db
     networks:
       musorg-bridge:
         ipv4_address: 10.5.0.8
