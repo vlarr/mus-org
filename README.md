@@ -1,5 +1,5 @@
 # mus-org
-
+![master](https://github.com/vlarr/mus-org/workflows/master/badge.svg) 
 ![develop](https://github.com/vlarr/mus-org/workflows/develop/badge.svg)
 
 Органайзер музыки. Используется для:
