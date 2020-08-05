@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 import ru.vlarp.musorg.commons.dao.RawTrackDao;
+import ru.vlarp.musorg.commons.domain.RawTrackRecord;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
 import ru.vlarp.musorg.commons.pojo.RawTrack;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
@@ -69,7 +70,7 @@ public class AppController {
     }
 
     @PostMapping(path = "/lastTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<RawTrack>> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
+    public ResponseEntity<List<RawTrackRecord>> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
         log.info("call lastTrackInfos. trackLimit={}", trackLimit);
 
         //todo убрать прямое чтение

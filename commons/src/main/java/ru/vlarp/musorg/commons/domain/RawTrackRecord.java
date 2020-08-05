@@ -1,16 +1,17 @@
-package ru.vlarp.musorg.commons.pojo;
+package ru.vlarp.musorg.commons.domain;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RawPlaylistTrackInfo {
+public class RawTrackRecord {
+    private Long id;
     private String artist;
     private String title;
     private String album;
     private Long trackSourceId;
     private Long creationTime;
+    private Long state;
 }

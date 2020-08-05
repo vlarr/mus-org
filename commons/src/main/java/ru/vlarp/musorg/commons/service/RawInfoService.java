@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
+import ru.vlarp.musorg.commons.domain.RawTrackRecord;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawTrack;
 import ru.vlarp.musorg.commons.pojo.TrackInfo;
 
 import java.time.Instant;
@@ -76,7 +76,7 @@ public class RawInfoService {
             for (Map.Entry<String, Long> entry : sources.entrySet()) {
                 if (entry.getValue() != null) {
 
-                    RawTrack rawPlaylistTrackInfo = RawTrack
+                    RawTrackRecord rawPlaylistTrackInfo = RawTrackRecord
                             .builder()
                             .artist(trackInfo.getArtist())
                             .title(trackInfo.getTitle())

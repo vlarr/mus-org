@@ -1,7 +1,9 @@
 package ru.vlarp.musorg.commons.pojo;
 
-import lombok.*;
-import org.apache.commons.lang3.ObjectUtils;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 @AllArgsConstructor
