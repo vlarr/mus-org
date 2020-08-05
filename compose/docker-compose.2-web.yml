@@ -1,0 +1,20 @@
+version: "3"
+services:
+  rtiwh:
+    build:
+      context: ../raw-track-info-web-helper
+    networks:
+      musorg-bridge:
+        ipv4_address: ${RTIWH_ADDR}
+    environment:
+      - RABBIT_MQ_ADDRESS=${RABBIT_MQ_ADDR}
+      - REDIS_ADDR=${REDIS_ADDR}
+      - RMQ_USERNAME=${RMQ_USERNAME}
+      - RMQ_PASSWORD=${RMQ_PASSWORD}
+    ports:
+      - 8082:8080
+
+networks:
+  musorg-bridge:
+    external:
+      name: mus-org-bridge-network

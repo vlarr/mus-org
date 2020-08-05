@@ -15,8 +15,7 @@ import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.commons.domain.RawTrackRecord;
 import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawTrack;
-import ru.vlarp.musorg.commons.pojo.TrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 
 import java.util.Collections;
 import java.util.List;
@@ -53,60 +52,16 @@ public class RawInfoServiceTest {
         Mockito.reset(trackSourceDao, rawTrackDao);
     }
 
-
-    @Test
-    public void tryParseTrackInfo() {
-        //given, when
-        ParseTrackInfoResult result = rawInfoService.tryParseTrackInfo("test1 - test2");
-        //then
-        assertNotNull(result);
-        assertEquals("test1", result.getArtist());
-        assertEquals("test2", result.getTitle());
-        assertEquals("OK", result.getStatus());
-
-        //given, when
-        result = rawInfoService.tryParseTrackInfo("test1 — test2");
-        //then
-        assertNotNull(result);
-        assertEquals("test1", result.getArtist());
-        assertEquals("test2", result.getTitle());
-        assertEquals("OK", result.getStatus());
-
-        //given, when
-        result = rawInfoService.tryParseTrackInfo("test1 - test2 - test3");
-        //then
-        assertNotNull(result);
-        assertNull(result.getArtist());
-        assertNull(result.getTitle());
-        assertEquals("ERROR", result.getStatus());
-
-        //given, when
-        result = rawInfoService.tryParseTrackInfo("test1");
-        //then
-        assertNotNull(result);
-        assertNull(result.getArtist());
-        assertNull(result.getTitle());
-        assertEquals("ERROR", result.getStatus());
-
-        //given, when
-        result = rawInfoService.tryParseTrackInfo("  ");
-        //then
-        assertNotNull(result);
-        assertNull(result.getArtist());
-        assertNull(result.getTitle());
-        assertEquals("ERROR", result.getStatus());
-    }
-
     @Test
     public void consumeTrackInfos() {
         //given
         Mockito.when(trackSourceDao.findIdByName("SOURCE1")).thenReturn(1L);
         Mockito.when(trackSourceDao.findIdByName("SOURCE2")).thenReturn(2L);
 
-        TrackInfo trackInfo = new TrackInfo("test1", null, "test2", "SOURCE1,SOURCE2");
+        RawTrackInfo rawTrackInfo = new RawTrackInfo("test1", null, "test2", "SOURCE1,SOURCE2");
 
         //when
-        rawInfoService.consumeTrackInfos(Collections.singletonList(trackInfo));
+        rawInfoService.consumeTrackInfos(Collections.singletonList(rawTrackInfo));
 
         //then
         ArgumentCaptor<RawTrackRecord> argumentCaptor = ArgumentCaptor.forClass(RawTrackRecord.class);

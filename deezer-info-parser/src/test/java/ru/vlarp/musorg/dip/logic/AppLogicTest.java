@@ -10,7 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.vlarp.musorg.commons.pojo.TrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 import ru.vlarp.musorg.commons.service.RawInfoService;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
 
@@ -38,7 +38,7 @@ public class AppLogicTest {
         ObjectMapper objectMapper = new ObjectMapper();
         DeezerTracks response = objectMapper.readValue(new ClassPathResource("example.json").getFile(), DeezerTracks.class);
 
-        ArrayList<TrackInfo> result = new ArrayList<>();
+        ArrayList<RawTrackInfo> result = new ArrayList<>();
 
         //  When
         int processedTracks = appLogic.processDeezerTracksPart(response, "playlist1", result);
@@ -47,14 +47,14 @@ public class AppLogicTest {
         assertEquals(25, processedTracks);
         assertEquals(25, result.size());
 
-        TrackInfo actualTrackInfo0 = result.get(0);
-        TrackInfo expectedTrackInfo0 = TrackInfo
+        RawTrackInfo actualRawTrackInfo0 = result.get(0);
+        RawTrackInfo expectedRawTrackInfo0 = RawTrackInfo
                 .builder()
                 .sources("playlist1")
                 .album("Passages")
                 .artist("Aes Dana")
                 .title("Unlit")
                 .build();
-        assertEquals(expectedTrackInfo0, actualTrackInfo0);
+        assertEquals(expectedRawTrackInfo0, actualRawTrackInfo0);
     }
 }
