@@ -24,6 +24,27 @@ public class AppLogic {
         this.rawInfoService = rawInfoService;
     }
 
+    int processDeezerTracksPart(DeezerTracks response, String playlistName,
+                                List<TrackInfo> resultTrackInfoList) {
+        if (response.data != null) {
+            for (DeezerTrack track : response.data) {
+                resultTrackInfoList.add(
+                        TrackInfo
+                                .builder()
+                                .artist((track.artist != null) ? track.artist.name : null)
+                                .title(track.title)
+                                .album((track.album != null) ? track.album.title : null)
+                                .sources(playlistName)
+                                .build()
+                );
+            }
+
+            return response.data.size();
+        } else {
+            return 0;
+        }
+    }
+
     public Integer processDeezerPlaylist(Long playlistId, String playlistName) {
         RestTemplate restTemplate = new RestTemplate();
 
@@ -39,22 +60,9 @@ public class AppLogic {
                     break;
                 }
 
-                totalCount += response.data.size();
-                log.info("totalCount:{}, count:{}", totalCount, response.data.size());
-
-                if (response.data != null) {
-                    for (DeezerTrack track : response.data) {
-                        resultTrackInfoList.add(
-                                TrackInfo
-                                        .builder()
-                                        .artist((track.artist != null) ? track.artist.name : null)
-                                        .title(track.title)
-                                        .album((track.album != null) ? track.album.title : null)
-                                        .sources(playlistName)
-                                        .build()
-                        );
-                    }
-                }
+                int processedTracks = processDeezerTracksPart(response, playlistName, resultTrackInfoList);
+                totalCount += processedTracks;
+                log.info("totalCount:{}, count:{}", totalCount, processedTracks);
 
                 Thread.sleep(100L); // ограничение на 50 запросов в секунду, минимум 20 мсек между запросами. Установлено 100 мсек чтобы наверняка
             } while (response.next != null);
