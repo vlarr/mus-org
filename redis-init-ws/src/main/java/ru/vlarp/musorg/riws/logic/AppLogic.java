@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.rlib.dao.TrackSourceRedisDao;
 
-import java.util.HashSet;
-
 @Component
 public class AppLogic {
     private TrackSourceDao trackSourceDao;
@@ -23,6 +21,6 @@ public class AppLogic {
     }
 
     public void initRedis() {
-        trackSourceRedisDao.saveAll(new HashSet<>(trackSourceDao.findActive()));
+        trackSourceRedisDao.saveAll(trackSourceDao.findActive());
     }
 }

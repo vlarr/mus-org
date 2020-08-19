@@ -30,7 +30,7 @@
         <dependency>
             <groupId>ru.vlarp.musorg.rlib</groupId>
             <artifactId>redis-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>ru.vlarp.musorg.rmql</groupId>
