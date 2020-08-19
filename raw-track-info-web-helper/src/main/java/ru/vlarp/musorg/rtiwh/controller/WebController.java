@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.vlarp.musorg.commons.dao.TrackSourceDao;
+import ru.vlarp.musorg.rlib.dao.TrackSourceRedisDao;
 
 @Controller
 public class WebController {
-    private TrackSourceDao trackSourceDao;
+    private TrackSourceRedisDao trackSourceRedisDao;
 
     @Autowired
-    public void setTrackSourceDao(TrackSourceDao trackSourceDao) {
-        this.trackSourceDao = trackSourceDao;
+    public void setTrackSourceDao(TrackSourceRedisDao trackSourceRedisDao) {
+        this.trackSourceRedisDao = trackSourceRedisDao;
     }
 
     @GetMapping("/home")
@@ -22,7 +22,7 @@ public class WebController {
 
     @GetMapping("/addTrackInfo")
     public String addTrackInfo(Model model) {
-        model.addAttribute("activeSources", trackSourceDao.findActiveSourceNames());
+        model.addAttribute("activeSources", trackSourceRedisDao.findAll());
         return "addTrackInfo";
     }
 }

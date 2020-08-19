@@ -39,7 +39,7 @@ public class TrackSourceDao {
         myMusJdbcTemplate.update(SQL_UPDATE_LAST_MODIFIED_TIME, lastModifiedTime, sourceId);
     }
 
-    public List<String> findActiveSourceNames() {
+    public List<String> findActive() {
         return myMusJdbcTemplate.query(SQL_ACTIVE_SOURCE_NAMES, (resultSet, i) -> resultSet.getString("NAME"));
     }
 }

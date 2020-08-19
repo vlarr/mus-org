@@ -1,0 +1,23 @@
+version: "3"
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      musorg-bridge:
+        ipv4_address: ${REDIS_ADDR}
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      musorg-bridge:
+        ipv4_address: ${RABBIT_MQ_ADDR}
+
+networks:
+  musorg-bridge:
+    external:
+      name: mus-org-bridge-network

@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import ru.vlarp.musorg.commons.dao.RawTrackDao;
 import ru.vlarp.musorg.commons.dao.TrackSourceDao;
 import ru.vlarp.musorg.commons.domain.RawTrackRecord;
-import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.TrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -37,34 +36,17 @@ public class RawInfoService {
         this.rawTrackDao = rawTrackDao;
     }
 
-    public ParseTrackInfoResult tryParseTrackInfo(String rawTrackInfo) {
-        log.info(rawTrackInfo);
+    public List<Boolean> consumeTrackInfos(List<RawTrackInfo> rawTrackInfoList) {
+        ArrayList<Boolean> results = new ArrayList<>(rawTrackInfoList.size());
+        for (RawTrackInfo rawTrackInfo : rawTrackInfoList) {
+            log.info("track info: {}", rawTrackInfo);
 
-        String[] splitStr = StringUtils.split(rawTrackInfo, "-—");
-
-        if (splitStr.length == 2) {
-            splitStr[0] = StringUtils.trim(splitStr[0]);
-            splitStr[1] = StringUtils.trim(splitStr[1]);
-
-            ParseTrackInfoResult result = new ParseTrackInfoResult(splitStr[0], splitStr[1], "OK");
-            log.info("parsed:{}", result);
-            return result;
-        }
-
-        return new ParseTrackInfoResult(null, null, "ERROR");
-    }
-
-    public List<Boolean> consumeTrackInfos(List<TrackInfo> trackInfoList) {
-        ArrayList<Boolean> results = new ArrayList<>(trackInfoList.size());
-        for (TrackInfo trackInfo : trackInfoList) {
-            log.info("track info: {}", trackInfo);
-
-            if (trackInfo.isAnyEmpty()) {
+            if (rawTrackInfo.isAnyEmpty()) {
                 results.add(false);
                 continue;
             }
 
-            Map<String, Long> sources = Stream.of(StringUtils.split(trackInfo.getSources(), ','))
+            Map<String, Long> sources = Stream.of(StringUtils.split(rawTrackInfo.getSources(), ','))
                     .map(String::trim)
                     .filter(StringUtils::isNotEmpty)
                     .collect(Collectors.toMap(
@@ -78,9 +60,9 @@ public class RawInfoService {
 
                     RawTrackRecord rawPlaylistTrackInfo = RawTrackRecord
                             .builder()
-                            .artist(trackInfo.getArtist())
-                            .title(trackInfo.getTitle())
-                            .album(trackInfo.getAlbum())
+                            .artist(rawTrackInfo.getArtist())
+                            .title(rawTrackInfo.getTitle())
+                            .album(rawTrackInfo.getAlbum())
                             .trackSourceId(entry.getValue())
                             .creationTime(timeStamp)
                             .build();

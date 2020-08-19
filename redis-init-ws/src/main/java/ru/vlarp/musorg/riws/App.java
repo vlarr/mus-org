@@ -1,12 +1,14 @@
-package ru.vlarp.musorg.rtic;
+package ru.vlarp.musorg.riws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+@EnableWebMvc
 @SpringBootApplication(scanBasePackages = {
         "ru.vlarp.musorg.commons",
-        "ru.vlarp.musorg.rtic",
-        "ru.vlarp.musorg.rmql"
+        "ru.vlarp.musorg.rlib",
+        "ru.vlarp.musorg.riws"
 })
 public class App {
     public static void main(String[] args) {

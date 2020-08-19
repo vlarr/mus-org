@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.vlarp.musorg.commons.pojo.TrackInfo;
+import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 import ru.vlarp.musorg.commons.service.RawInfoService;
 import ru.vlarp.musorg.dip.pojo.DeezerTrack;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
@@ -25,11 +25,11 @@ public class AppLogic {
     }
 
     int processDeezerTracksPart(DeezerTracks response, String playlistName,
-                                List<TrackInfo> resultTrackInfoList) {
+                                List<RawTrackInfo> resultRawTrackInfoList) {
         if (response.data != null) {
             for (DeezerTrack track : response.data) {
-                resultTrackInfoList.add(
-                        TrackInfo
+                resultRawTrackInfoList.add(
+                        RawTrackInfo
                                 .builder()
                                 .artist((track.artist != null) ? track.artist.name : null)
                                 .title(track.title)
@@ -48,7 +48,7 @@ public class AppLogic {
     public Integer processDeezerPlaylist(Long playlistId, String playlistName) {
         RestTemplate restTemplate = new RestTemplate();
 
-        List<TrackInfo> resultTrackInfoList = new ArrayList<>();
+        List<RawTrackInfo> resultRawTrackInfoList = new ArrayList<>();
 
         int totalCount = 0;
         DeezerTracks response = null;
@@ -60,7 +60,7 @@ public class AppLogic {
                     break;
                 }
 
-                int processedTracks = processDeezerTracksPart(response, playlistName, resultTrackInfoList);
+                int processedTracks = processDeezerTracksPart(response, playlistName, resultRawTrackInfoList);
                 totalCount += processedTracks;
                 log.info("totalCount:{}, count:{}", totalCount, processedTracks);
 
@@ -70,7 +70,7 @@ public class AppLogic {
             return 1;
         }
 
-        rawInfoService.consumeTrackInfos(resultTrackInfoList);
+        rawInfoService.consumeTrackInfos(resultRawTrackInfoList);
 
         return 0;
     }
