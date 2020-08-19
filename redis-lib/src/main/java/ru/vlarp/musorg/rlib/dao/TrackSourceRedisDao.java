@@ -5,7 +5,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import ru.vlarp.musorg.rlib.enums.RedisKeys;
 
-import java.util.Set;
+import java.util.List;
 
 @Component
 public class TrackSourceRedisDao {
@@ -16,11 +16,12 @@ public class TrackSourceRedisDao {
         this.redisTemplate = redisTemplate;
     }
 
-    public Set<String> findAll() {
-        return redisTemplate.boundSetOps(RedisKeys.TRACK_SOURCE_SET).members();
+    public List<String> findAll() {
+        return redisTemplate.boundListOps(RedisKeys.TRACK_SOURCE_SET).range(0, -1);
     }
 
-    public void saveAll(Set<String> trackSources) {
-        redisTemplate.boundSetOps(RedisKeys.TRACK_SOURCE_SET).add(trackSources.toArray(new String[0]));
+    public void saveAll(List<String> trackSources) {
+        redisTemplate.delete(RedisKeys.TRACK_SOURCE_SET);
+        redisTemplate.boundListOps(RedisKeys.TRACK_SOURCE_SET).rightPushAll(trackSources.toArray(new String[0]));
     }
 }
