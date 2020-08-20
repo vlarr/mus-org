@@ -1,5 +1,5 @@
-function successSendRawTrackInfo(data) {
-    console.log("success SendRawTrackInfo", data)
+function successParseTrackInfo(data) {
+    console.log("success ParseTrackInfo", data)
 
     if ("artist" in data) {
         $("#artistText").val(data["artist"])
@@ -10,7 +10,7 @@ function successSendRawTrackInfo(data) {
     }
 }
 
-function sendRawTrackInfo() {
+function tryParseTrackInfo() {
     let rawStr = $("#rawTrackText").val()
 
     if (!rawStr) {
@@ -19,28 +19,17 @@ function sendRawTrackInfo() {
 
     $.ajax({
         'type': 'POST',
-        'url': "/consumeRawTrackInfo",
+        'url': "/tryParseTrackInfo",
         'contentType': 'text/plain',
         'data': rawStr,
         'dataType': 'json',
-        'success': successSendRawTrackInfo
+        'success': successParseTrackInfo
     });
-}
-
-function successGetLastTracks(data) {
-    $("#send-feedback").html(new Date().toLocaleString() + " @ " + JSON.stringify(data));
 }
 
 function successSendTrackInfo(data) {
     console.log("success send:", data);
-    $.ajax({
-        'type': 'POST',
-        'url': "/lastTrackInfos",
-        'contentType': 'application/json',
-        'data': '1',
-        'dataType': 'json',
-        'success': successGetLastTracks
-    });
+    $("#send-feedback").html(new Date().toLocaleString() + " @ " + data);
 }
 
 function sendTrackInfo() {
@@ -64,7 +53,7 @@ function sendTrackInfo() {
 
     $.ajax({
         'type': 'POST',
-        'url': "/consumeTrackInfos",
+        'url': "/saveRawTrackInfo",
         'contentType': 'application/json',
         'data': jsonStr,
         'dataType': 'json',

@@ -15,6 +15,7 @@ import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.rmql.utils.TopicNameList;
 import ru.vlarp.musorg.rtiwh.logic.AppLogic;
 
+import java.time.Instant;
 import java.util.List;
 
 @Controller
@@ -33,7 +34,7 @@ public class AppController {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @PostMapping(path = "/consumeRawTrackInfo", consumes = "text/plain", produces = "application/json")
+    @PostMapping(path = "/tryParseTrackInfo", consumes = "text/plain", produces = "application/json")
     public ResponseEntity<ParseTrackInfoResult> tryParseTrackInfoString(@RequestBody String rawTrackInfo) {
         try {
             ParseTrackInfoResult result = appLogic.tryParseTrackInfo(rawTrackInfo);
@@ -46,21 +47,12 @@ public class AppController {
         }
     }
 
-    @PostMapping(path = "/consumeTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Boolean[]> saveRawTrackInfo(@RequestBody List<RawTrackInfo> rawTrackInfo) {
+    @PostMapping(path = "/saveRawTrackInfo", consumes = "application/json", produces = "text/plain")
+    public ResponseEntity<String> saveRawTrackInfo(@RequestBody List<RawTrackInfo> rawTrackInfo) {
         log.info("call consumeTrackInfos. trackInfo={}", rawTrackInfo);
         for (RawTrackInfo trackInfo : rawTrackInfo) {
             rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(trackInfo));
         }
-        return ResponseEntity.ok(new Boolean[rawTrackInfo.size()]);
-    }
-
-    @PostMapping(path = "/lastTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
-        log.info("call lastTrackInfos. trackLimit={}", trackLimit);
-
-        //todo убрать прямое чтение
-//        return ResponseEntity.ok(rawTrackDao.findLast(trackLimit));
-        return ResponseEntity.ok("Ok");
+        return ResponseEntity.ok(String.format("{\"result\":\"ok\",\"timestamp\"=%d}", Instant.now().toEpochMilli()));
     }
 }

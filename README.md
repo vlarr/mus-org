@@ -23,6 +23,10 @@
 3 Веб
 > docker-compose --env-file=params.env -f .\docker-compose.2-web.yml up --build
 
+3.1 Запуск веба через jar
+
+> java -Drmq.addr=\<raddit-mq-address> -Dredis.addr=\<Dredis-address> -Drmq.username=\<raddit-mq-username> -Drmq.password=\<raddit-mq-password> -jar raw-track-info-web-helper-\<version\>.jar
+
 4 Служебные
 > docker-compose --env-file=params.env -f .\docker-compose.2-proc.yml up --build
 

@@ -13,7 +13,7 @@ import ru.vlarp.musorg.rmql.utils.TopicNameList;
 
 @Configuration
 public class RabbitMqConfig {
-    @Value("${RABBIT_MQ_ADDRESS}")
+    @Value("${rmq.addr}")
     private String rmqAddress;
 
     @Value("${rmq.username}")

@@ -20,7 +20,7 @@ services:
       musorg-bridge:
         ipv4_address: ${RTIC_ADDR}
     environment:
-      - RABBIT_MQ_ADDRESS=${RABBIT_MQ_ADDR}
+      - RMQ_ADDR=${RMQ_ADDR}
       - REDIS_ADDR=${REDIS_ADDR}
       - RMQ_USERNAME=${RMQ_USERNAME}
       - RMQ_PASSWORD=${RMQ_PASSWORD}
@@ -34,7 +34,7 @@ services:
       musorg-bridge:
         ipv4_address: ${RIWS_ADDR}
     environment:
-      - RABBIT_MQ_ADDRESS=${RABBIT_MQ_ADDR}
+      - RMQ_ADDR=${RMQ_ADDR}
       - REDIS_ADDR=${REDIS_ADDR}
       - RMQ_USERNAME=${RMQ_USERNAME}
       - RMQ_PASSWORD=${RMQ_PASSWORD}

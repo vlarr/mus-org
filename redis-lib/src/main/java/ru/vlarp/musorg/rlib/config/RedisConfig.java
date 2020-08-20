@@ -10,7 +10,7 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 @Configuration
 public class RedisConfig {
-    @Value("${REDIS_ADDR}")
+    @Value("${redis.addr}")
     private String redisAddress;
 
     @Bean
