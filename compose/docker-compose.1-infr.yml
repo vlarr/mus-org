@@ -15,7 +15,7 @@ services:
       - "15672:15672"
     networks:
       musorg-bridge:
-        ipv4_address: ${RABBIT_MQ_ADDR}
+        ipv4_address: ${RMQ_ADDR}
 
 networks:
   musorg-bridge:
