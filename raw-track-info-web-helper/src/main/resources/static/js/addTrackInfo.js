@@ -29,7 +29,7 @@ function tryParseTrackInfo() {
 
 function successSendTrackInfo(data) {
     console.log("success send:", data);
-    $("#send-feedback").html(new Date().toLocaleString() + " @ " + data);
+    $("#send-feedback").html(new Date().toLocaleString() + " @ " + JSON.stringify(data));
 }
 
 function sendTrackInfo() {
@@ -48,7 +48,7 @@ function sendTrackInfo() {
 
     sources = sources.slice(1);
 
-    let jsonStr = JSON.stringify([{artist: artist, title: title, sources: sources}]);
+    let jsonStr = JSON.stringify({artist: artist, title: title, sources: sources});
     console.log(jsonStr);
 
     $.ajax({
