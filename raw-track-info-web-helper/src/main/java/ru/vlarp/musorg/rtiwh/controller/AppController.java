@@ -15,9 +15,6 @@ import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.rmql.utils.TopicNameList;
 import ru.vlarp.musorg.rtiwh.logic.AppLogic;
 
-import java.time.Instant;
-import java.util.List;
-
 @Controller
 @Slf4j
 public class AppController {
@@ -47,12 +44,15 @@ public class AppController {
         }
     }
 
-    @PostMapping(path = "/saveRawTrackInfo", consumes = "application/json", produces = "text/plain")
-    public ResponseEntity<String> saveRawTrackInfo(@RequestBody List<RawTrackInfo> rawTrackInfo) {
+    @PostMapping(path = "/saveRawTrackInfo", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<RawTrackInfo> saveRawTrackInfo(@RequestBody RawTrackInfo rawTrackInfo) {
         log.info("call consumeTrackInfos. trackInfo={}", rawTrackInfo);
-        for (RawTrackInfo trackInfo : rawTrackInfo) {
-            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(trackInfo));
+
+        try {
+            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rawTrackInfo));
+            return ResponseEntity.ok(rawTrackInfo);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        return ResponseEntity.ok(String.format("{\"result\":\"ok\",\"timestamp\"=%d}", Instant.now().toEpochMilli()));
     }
 }
