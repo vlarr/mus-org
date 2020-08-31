@@ -1,4 +1,4 @@
-package ru.vlarp.musorg.commons.config;
+package ru.vlarp.musorg.sqltl.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,14 +1,13 @@
-package ru.vlarp.musorg.commons.service;
+package ru.vlarp.musorg.sqltl.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.vlarp.musorg.commons.dao.RawTrackDao;
-import ru.vlarp.musorg.commons.dao.TrackSourceDao;
-import ru.vlarp.musorg.commons.domain.RawTrackRecord;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
+import ru.vlarp.musorg.sqltl.dao.RawTrackDao;
+import ru.vlarp.musorg.sqltl.dao.TrackSourceDao;
+import ru.vlarp.musorg.sqltl.domain.RawTrackRecord;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -19,9 +18,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
+@Slf4j
 public class RawInfoService {
-    private static final Logger log = LoggerFactory.getLogger(RawInfoService.class);
-
     private TrackSourceDao trackSourceDao;
 
     private RawTrackDao rawTrackDao;

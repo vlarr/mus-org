@@ -17,6 +17,7 @@
         <module>rmq-lib</module>
         <module>redis-lib</module>
         <module>redis-init-ws</module>
+        <module>sqlite-lib</module>
     </modules>
 
     <properties>
@@ -80,6 +81,12 @@
 
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -101,6 +108,13 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>3.1.0</version>
                 <scope>test</scope>
             </dependency>
 
@@ -127,6 +141,19 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.12</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.xerial</groupId>
+                <artifactId>sqlite-jdbc</artifactId>
+                <version>3.25.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.10.5</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

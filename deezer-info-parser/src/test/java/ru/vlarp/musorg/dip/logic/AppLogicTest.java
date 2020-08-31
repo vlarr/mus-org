@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
-import ru.vlarp.musorg.commons.service.RawInfoService;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
+import ru.vlarp.musorg.sqltl.service.RawInfoService;
 
 import java.io.IOException;
 import java.util.ArrayList;

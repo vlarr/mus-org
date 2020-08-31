@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
-import ru.vlarp.musorg.commons.service.RawInfoService;
 import ru.vlarp.musorg.dip.pojo.DeezerTrack;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
+import ru.vlarp.musorg.sqltl.service.RawInfoService;
 
 import java.util.ArrayList;
 import java.util.List;

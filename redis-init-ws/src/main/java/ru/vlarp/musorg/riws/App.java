@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @SpringBootApplication(scanBasePackages = {
         "ru.vlarp.musorg.commons",
+        "ru.vlarp.musorg.sqltl",
         "ru.vlarp.musorg.rlib",
         "ru.vlarp.musorg.riws"
 })

@@ -1,6 +1,7 @@
-package ru.vlarp.musorg.commons.domain;
+package ru.vlarp.musorg.sqltl.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
+import ru.vlarp.musorg.sqltl.domain.RawTrackRecord;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

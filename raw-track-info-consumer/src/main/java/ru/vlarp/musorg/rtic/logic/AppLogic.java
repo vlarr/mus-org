@@ -5,9 +5,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
-import ru.vlarp.musorg.commons.service.RawInfoService;
 import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.rmql.utils.TopicNameList;
+import ru.vlarp.musorg.sqltl.service.RawInfoService;
 
 import java.util.Collections;
 

@@ -1,7 +1,10 @@
-package ru.vlarp.musorg.commons.pojo;
+package ru.vlarp.musorg.rtiwh.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
@@ -10,6 +13,7 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParseTrackInfoResult {
     private String artist;
+    private String album;
     private String title;
     private String status;
 }
