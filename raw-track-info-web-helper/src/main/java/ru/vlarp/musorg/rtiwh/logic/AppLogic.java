@@ -17,11 +17,11 @@ public class AppLogic {
             splitStr[0] = StringUtils.trim(splitStr[0]);
             splitStr[1] = StringUtils.trim(splitStr[1]);
 
-            ParseTrackInfoResult result = new ParseTrackInfoResult(splitStr[0], splitStr[1], "OK");
+            ParseTrackInfoResult result = new ParseTrackInfoResult(splitStr[0], null, splitStr[1], "OK");
             log.info("parsed:{}", result);
             return result;
         }
 
-        return new ParseTrackInfoResult(null, null, "ERROR");
+        return new ParseTrackInfoResult(null, null, null, "ERROR");
     }
 }

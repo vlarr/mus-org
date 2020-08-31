@@ -10,6 +10,7 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParseTrackInfoResult {
     private String artist;
+    private String album;
     private String title;
     private String status;
 }
