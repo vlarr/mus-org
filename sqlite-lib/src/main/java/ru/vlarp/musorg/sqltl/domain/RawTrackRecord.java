@@ -1,4 +1,4 @@
-package ru.vlarp.musorg.commons.domain;
+package ru.vlarp.musorg.sqltl.domain;
 
 import lombok.*;
 

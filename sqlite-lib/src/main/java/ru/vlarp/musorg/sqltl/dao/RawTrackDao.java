@@ -1,19 +1,18 @@
-package ru.vlarp.musorg.commons.dao;
+package ru.vlarp.musorg.sqltl.dao;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import ru.vlarp.musorg.commons.domain.RawTrackRecord;
-import ru.vlarp.musorg.commons.domain.RawTrackRecordMapper;
+import ru.vlarp.musorg.sqltl.domain.RawTrackRecord;
+import ru.vlarp.musorg.sqltl.mapper.RawTrackRecordMapper;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class RawTrackDao {
-    private static final Logger log = LoggerFactory.getLogger(RawTrackDao.class);
     private static final String SQL_INSERT_TRACK_INFO = "INSERT INTO R_TRACKS(ARTIST, ALBUM, TITLE, TRACK_SOURCE_ID, CREATION_TIME, STATE) VALUES (?,?,?,?,?,?)";
     private static final String SQL_SELECT_LAST_TRACKS = "SELECT * FROM R_TRACKS ORDER BY CREATION_TIME DESC LIMIT ?";
     private static final String SQL_SELECT_FIRST_TRACKS_WITH_STATE = "SELECT * FROM R_TRACKS WHERE STATE IS NULL ORDER BY ID LIMIT ?";

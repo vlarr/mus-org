@@ -1,4 +1,4 @@
-package ru.vlarp.musorg.commons.dao;
+package ru.vlarp.musorg.sqltl.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

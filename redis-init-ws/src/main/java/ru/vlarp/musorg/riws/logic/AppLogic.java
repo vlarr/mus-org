@@ -2,7 +2,7 @@ package ru.vlarp.musorg.riws.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.vlarp.musorg.commons.dao.TrackSourceDao;
+import ru.vlarp.musorg.sqltl.dao.TrackSourceDao;
 import ru.vlarp.musorg.rlib.dao.TrackSourceRedisDao;
 
 @Component

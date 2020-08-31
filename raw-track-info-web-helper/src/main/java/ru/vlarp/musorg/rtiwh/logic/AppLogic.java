@@ -3,7 +3,7 @@ package ru.vlarp.musorg.rtiwh.logic;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
+import ru.vlarp.musorg.rtiwh.pojo.ParseTrackInfoResult;
 
 @Component
 @Slf4j

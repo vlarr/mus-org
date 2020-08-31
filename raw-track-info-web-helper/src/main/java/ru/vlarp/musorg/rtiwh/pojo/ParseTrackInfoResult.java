@@ -1,7 +1,10 @@
-package ru.vlarp.musorg.commons.pojo;
+package ru.vlarp.musorg.rtiwh.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
