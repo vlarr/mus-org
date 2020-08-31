@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
         "ru.vlarp.musorg.commons",
-        "ru.vlarp.musorg.sqltl",
+        "ru.vlarp.musorg.rmql",
         "ru.vlarp.musorg.dip"})
 public class App {
     public static void main(String[] args) {

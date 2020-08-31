@@ -1,27 +1,27 @@
 package ru.vlarp.musorg.dip.logic;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
+import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.dip.pojo.DeezerTrack;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
-import ru.vlarp.musorg.sqltl.service.RawInfoService;
+import ru.vlarp.musorg.rmql.utils.TopicNameList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Slf4j
 public class AppLogic {
-    private static final Logger log = LoggerFactory.getLogger(AppLogic.class);
-
-    private RawInfoService rawInfoService;
+    private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public void setRawInfoService(RawInfoService rawInfoService) {
-        this.rawInfoService = rawInfoService;
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     int processDeezerTracksPart(DeezerTracks response, String playlistName,
@@ -70,8 +70,9 @@ public class AppLogic {
             return 1;
         }
 
-        rawInfoService.consumeTrackInfos(resultRawTrackInfoList);
-
+        for (RawTrackInfo rawTrackInfo : resultRawTrackInfoList) {
+            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rawTrackInfo));
+        }
         return 0;
     }
 }

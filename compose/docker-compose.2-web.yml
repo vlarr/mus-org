@@ -1,5 +1,18 @@
 version: "3"
 services:
+  dip:
+    build:
+      context: ../deezer-info-parser
+    networks:
+      musorg-bridge:
+        ipv4_address: ${DIP_ADDR}
+    environment:
+      - RMQ_ADDR=${RMQ_ADDR}
+      - RMQ_USERNAME=${RMQ_USERNAME}
+      - RMQ_PASSWORD=${RMQ_PASSWORD}
+    ports:
+      - 8084:8080
+
   rtiwh:
     build:
       context: ../raw-track-info-web-helper

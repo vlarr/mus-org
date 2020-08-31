@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -12,7 +13,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
-import ru.vlarp.musorg.sqltl.service.RawInfoService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class AppLogicTest {
     @Import(AppLogic.class)
     static class TestContextConfiguration {
         @MockBean
-        public RawInfoService rawInfoService;
+        public RabbitTemplate rabbitTemplate;
     }
 
     @Autowired

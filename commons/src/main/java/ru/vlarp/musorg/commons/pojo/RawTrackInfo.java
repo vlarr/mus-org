@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 
-//  message and dto
+//  message and pojo
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
