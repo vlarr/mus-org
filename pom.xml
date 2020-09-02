@@ -35,6 +35,8 @@
                 <version>1</version>
             </dependency>
 
+            <!-- Spring -->
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
@@ -43,7 +45,7 @@
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-test</artifactId>
+                <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
@@ -65,6 +67,12 @@
                 <version>${spring-boot.version}</version>
                 <scope>runtime</scope>
                 <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>

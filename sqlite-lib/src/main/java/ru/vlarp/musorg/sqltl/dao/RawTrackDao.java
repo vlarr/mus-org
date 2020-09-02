@@ -4,13 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.vlarp.musorg.sqltl.domain.RawTrackRecord;
 import ru.vlarp.musorg.sqltl.mapper.RawTrackRecordMapper;
 
 import java.util.List;
 
-@Service
+@Component
 @Slf4j
 public class RawTrackDao {
     private static final String SQL_INSERT_TRACK_INFO = "INSERT INTO R_TRACKS(ARTIST, ALBUM, TITLE, TRACK_SOURCE_ID, CREATION_TIME, STATE) VALUES (?,?,?,?,?,?)";

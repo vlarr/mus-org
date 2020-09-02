@@ -1,5 +1,4 @@
-package ru.vlarp.musorg.sqltl.service;
-
+package ru.vlarp.musorg.rtic.service;
 
 import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
@@ -17,7 +16,6 @@ import ru.vlarp.musorg.sqltl.dao.RawTrackDao;
 import ru.vlarp.musorg.sqltl.dao.TrackSourceDao;
 import ru.vlarp.musorg.sqltl.domain.RawTrackRecord;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -41,6 +39,7 @@ public class RawInfoServiceTest {
 
     private TrackSourceDao trackSourceDao;
     private RawTrackDao rawTrackDao;
+
     private RawInfoService rawInfoService;
 
     @Autowired
@@ -64,7 +63,7 @@ public class RawInfoServiceTest {
     }
 
     @Test
-    public void consumeTrackInfos() {
+    public void processRawTrackInfoTest() {
         //given
         Mockito.when(trackSourceDao.findIdByName("SOURCE1")).thenReturn(1L);
         Mockito.when(trackSourceDao.findIdByName("SOURCE2")).thenReturn(2L);
@@ -72,7 +71,7 @@ public class RawInfoServiceTest {
         RawTrackInfo rawTrackInfo = new RawTrackInfo("test1", null, "test2", "SOURCE1,SOURCE2");
 
         //when
-        rawInfoService.consumeTrackInfos(Collections.singletonList(rawTrackInfo));
+        rawInfoService.processRawTrackInfo(rawTrackInfo);
 
         //then
         ArgumentCaptor<RawTrackRecord> argumentCaptor = ArgumentCaptor.forClass(RawTrackRecord.class);
@@ -89,6 +88,4 @@ public class RawInfoServiceTest {
         assertEquals("test2", capturedRawPlaylistTrackInfo.get(1).getTitle());
         assertTrue(ImmutableSet.of(1L, 2L).contains(capturedRawPlaylistTrackInfo.get(1).getTrackSourceId()));
     }
-
-
 }

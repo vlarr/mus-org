@@ -18,7 +18,7 @@ public class AppController {
     @ResponseBody
     @GetMapping(path = "/init-redis", produces = "application/json")
     public String initRedis() {
-        appLogic.initRedis();
+        appLogic.uploadRedisData();
         return "Ok";
     }
 

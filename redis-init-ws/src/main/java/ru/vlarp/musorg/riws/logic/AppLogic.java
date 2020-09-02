@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import ru.vlarp.musorg.sqltl.dao.TrackSourceDao;
 import ru.vlarp.musorg.rlib.dao.TrackSourceRedisDao;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class AppLogic {
     private TrackSourceDao trackSourceDao;
@@ -20,7 +22,8 @@ public class AppLogic {
         this.trackSourceRedisDao = trackSourceRedisDao;
     }
 
-    public void initRedis() {
+    @PostConstruct
+    public void uploadRedisData() {
         trackSourceRedisDao.saveAll(trackSourceDao.findActive());
     }
 }

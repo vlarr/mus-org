@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Component
 public class TrackSourceDao {
     private static final String SQL_SELECT_TRACK_SOURCE = "SELECT * FROM R_TRACK_SOURCES where NAME = ?";
     private static final String SQL_UPDATE_LAST_MODIFIED_TIME = "UPDATE R_TRACK_SOURCES SET LAST_MODIFIED_TIME = ? WHERE ID = ?";

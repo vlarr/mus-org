@@ -11,10 +11,9 @@
 
     <groupId>ru.vlarp.musorg.sqltl</groupId>
     <artifactId>sqlite-lib</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <dependencies>
-
         <dependency>
             <groupId>ru.vlarp.musorg</groupId>
             <artifactId>commons</artifactId>
@@ -42,8 +41,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
