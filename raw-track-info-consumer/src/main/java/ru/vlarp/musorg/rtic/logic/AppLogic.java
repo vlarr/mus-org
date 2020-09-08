@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
 import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.rmql.utils.TopicNameList;
-import ru.vlarp.musorg.sqltl.service.RawInfoService;
-
-import java.util.Collections;
+import ru.vlarp.musorg.rtic.service.RawInfoService;
 
 @Component
 @Slf4j
@@ -24,6 +22,6 @@ public class AppLogic {
     @RabbitListener(queues = TopicNameList.RAW_TRACK_INFO)
     public void listenForSampleQueue(String message) {
         log.info("Received <" + message + ">");
-        rawInfoService.consumeTrackInfos(Collections.singletonList(JsonUtils.fromJSON(RawTrackInfo.class, message)));
+        rawInfoService.processRawTrackInfo(JsonUtils.fromJSON(RawTrackInfo.class, message));
     }
 }
