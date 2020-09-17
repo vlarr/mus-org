@@ -2,11 +2,11 @@ function successParseTrackInfo(data) {
     console.log("success ParseTrackInfo", data)
 
     if ("artist" in data) {
-        $("#artistText").val(data["artist"])
+        $("#artistNameText").val(data["artist"])
     }
 
     if ("title" in data) {
-        $("#titleText").val(data["title"])
+        $("#trackTitleText").val(data["title"])
     }
 }
 
@@ -32,9 +32,15 @@ function successSendTrackInfo(data) {
     $("#send-feedback").html(new Date().toLocaleString() + " @ " + JSON.stringify(data));
 }
 
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+
 function sendTrackInfo() {
-    let artist = $("#artistText").val();
-    let title = $("#titleText").val();
+    let artistName = $("#artistNameText").val();
+    let albumTitle = $("#albumTitleText").val();
+    let trackTitle = $("#trackTitleText").val();
+    let tags = $("#tagsText").val();
 
     let sources = "";
 
@@ -48,7 +54,14 @@ function sendTrackInfo() {
 
     sources = sources.slice(1);
 
-    let jsonStr = JSON.stringify({artist: artist, title: title, sources: sources});
+    let message = {artist: artistName, album: albumTitle, track: trackTitle, sources: sources, tags: tags};
+
+    let jsonStr = JSON.stringify(message, (key, value) => {
+        if (/\S+/.test(value)) {
+            return value;
+        }
+    });
+
     console.log(jsonStr);
 
     $.ajax({

@@ -5,7 +5,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
+import ru.vlarp.musorg.commons.pojo.RmiMessage;
 import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.dip.pojo.DeezerTrack;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
@@ -25,15 +25,15 @@ public class AppLogic {
     }
 
     int processDeezerTracksPart(DeezerTracks response, String playlistName,
-                                List<RawTrackInfo> resultRawTrackInfoList) {
+                                List<RmiMessage> resultRawTrackInfoList) {
         if (response.data != null) {
             for (DeezerTrack track : response.data) {
                 resultRawTrackInfoList.add(
-                        RawTrackInfo
+                        RmiMessage
                                 .builder()
                                 .artist((track.artist != null) ? track.artist.name : null)
-                                .title(track.title)
                                 .album((track.album != null) ? track.album.title : null)
+                                .track(track.title)
                                 .sources(playlistName)
                                 .build()
                 );
@@ -48,7 +48,7 @@ public class AppLogic {
     public Integer processDeezerPlaylist(Long playlistId, String playlistName) {
         RestTemplate restTemplate = new RestTemplate();
 
-        List<RawTrackInfo> resultRawTrackInfoList = new ArrayList<>();
+        List<RmiMessage> resultRawTrackInfoList = new ArrayList<>();
 
         int totalCount = 0;
         DeezerTracks response = null;
@@ -70,7 +70,7 @@ public class AppLogic {
             return 1;
         }
 
-        for (RawTrackInfo rawTrackInfo : resultRawTrackInfoList) {
+        for (RmiMessage rawTrackInfo : resultRawTrackInfoList) {
             rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rawTrackInfo));
         }
         return 0;
