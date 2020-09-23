@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.vlarp.musorg.riws</groupId>
-    <artifactId>redis-init-ws</artifactId>
-    <version>1.0.0</version>
+    <groupId>ru.vlarp.musorg.rmip</groupId>
+    <artifactId>rmi-processor</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -19,12 +19,6 @@
             <artifactId>commons</artifactId>
             <version>1.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>ru.vlarp.musorg.rlib</groupId>
-            <artifactId>redis-lib</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-
         <dependency>
             <groupId>ru.vlarp.musorg.sqltl</groupId>
             <artifactId>sqlite-lib</artifactId>
@@ -35,22 +29,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -63,7 +52,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ru.vlarp.musorg.riws.App</mainClass>
+                    <mainClass>ru.vlarp.musorg.rmip.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -75,5 +64,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

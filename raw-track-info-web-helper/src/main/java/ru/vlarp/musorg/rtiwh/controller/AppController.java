@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.vlarp.musorg.commons.pojo.RawTrackInfo;
+import ru.vlarp.musorg.commons.pojo.RmiMessage;
 import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.rmql.utils.TopicNameList;
 import ru.vlarp.musorg.rtiwh.logic.AppLogic;
@@ -45,12 +45,12 @@ public class AppController {
     }
 
     @PostMapping(path = "/saveRawTrackInfo", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<RawTrackInfo> saveRawTrackInfo(@RequestBody RawTrackInfo rawTrackInfo) {
-        log.info("call consumeTrackInfos. trackInfo={}", rawTrackInfo);
+    public ResponseEntity<RmiMessage> saveRawTrackInfo(@RequestBody RmiMessage rmiMessage) {
+        log.info("call consumeTrackInfos. rmiMessage={}", rmiMessage);
 
         try {
-            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rawTrackInfo));
-            return ResponseEntity.ok(rawTrackInfo);
+            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rmiMessage));
+            return ResponseEntity.ok(rmiMessage);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
