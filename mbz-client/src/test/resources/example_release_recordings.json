@@ -1,0 +1,34 @@
+{
+  "recording-count": 4,
+  "recordings": [
+    {
+      "length": 396000,
+      "disambiguation": "",
+      "id": "13f1bd8e-5346-4f09-9a2c-2fb86905ac29",
+      "title": "Scala",
+      "video": false
+    },
+    {
+      "disambiguation": "",
+      "length": 321000,
+      "id": "59c5e1a6-d976-4bef-ab33-3f0d289d62fc",
+      "video": false,
+      "title": "Ephemere (Arpatle Remix)"
+    },
+    {
+      "length": 377000,
+      "disambiguation": "",
+      "title": "Ephemere",
+      "video": false,
+      "id": "6052b7fe-9c65-4701-93f5-c7fde082cc2b"
+    },
+    {
+      "length": 412000,
+      "disambiguation": "",
+      "title": "Ephemere (Gare Mat K Village Mix)",
+      "video": false,
+      "id": "9ad6dde1-9461-44cd-9785-b65cb95900a8"
+    }
+  ],
+  "recording-offset": 0
+}

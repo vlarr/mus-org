@@ -1,0 +1,23 @@
+{
+  "life-span": {
+    "ended": false,
+    "begin": null,
+    "end": null
+  },
+  "begin-area": null,
+  "isnis": [],
+  "sort-name": "Baumann, Hol",
+  "id": "9e10ee30-66d4-4599-a0f6-a8298106d9e6",
+  "ipis": [],
+  "end_area": null,
+  "begin_area": null,
+  "gender": "Male",
+  "disambiguation": "",
+  "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+  "country": null,
+  "type": "Person",
+  "name": "Hol Baumann",
+  "area": null,
+  "end-area": null,
+  "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9"
+}

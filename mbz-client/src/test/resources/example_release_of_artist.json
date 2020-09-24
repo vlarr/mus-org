@@ -1,0 +1,201 @@
+{
+  "release-offset": 0,
+  "release-count": 5,
+  "releases": [
+    {
+      "title": "Scala",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+            "name": "[Worldwide]",
+            "sort-name": "[Worldwide]",
+            "type-id": null,
+            "type": null,
+            "iso-3166-1-codes": [
+              "XW"
+            ]
+          },
+          "date": "2009-12-12"
+        }
+      ],
+      "quality": "normal",
+      "date": "2009-12-12",
+      "country": "XW",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "status": "Official",
+      "disambiguation": "",
+      "packaging-id": null,
+      "cover-art-archive": {
+        "count": 0,
+        "back": false,
+        "front": false,
+        "darkened": false,
+        "artwork": false
+      },
+      "id": "2669fd1f-d212-4a7c-b4f9-2146df4857ca",
+      "asin": null,
+      "packaging": null,
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "barcode": null
+    },
+    {
+      "packaging-id": "119eba76-b343-3e02-a292-f0f00644bb9b",
+      "disambiguation": "",
+      "status": "Official",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "id": "4f9ea317-f23b-4138-851a-b5034b6efa69",
+      "cover-art-archive": {
+        "back": false,
+        "count": 1,
+        "front": true,
+        "darkened": false,
+        "artwork": true
+      },
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "asin": null,
+      "packaging": "None",
+      "barcode": "",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "id": "08310658-51eb-3801-80de-5a0739207115",
+            "name": "France",
+            "sort-name": "France",
+            "type-id": null,
+            "type": null,
+            "iso-3166-1-codes": [
+              "FR"
+            ]
+          },
+          "date": "2013-02-11"
+        }
+      ],
+      "title": "Human | Live Nuit Hypnotique #4",
+      "date": "2013-02-11",
+      "quality": "normal",
+      "country": "FR"
+    },
+    {
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "status": "Official",
+      "disambiguation": "",
+      "packaging-id": null,
+      "cover-art-archive": {
+        "front": true,
+        "darkened": false,
+        "artwork": true,
+        "back": false,
+        "count": 1
+      },
+      "id": "4fa3df0a-7fc5-4eec-bed5-94126b7bf484",
+      "asin": "B0013FQD6G",
+      "packaging": null,
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "barcode": "881034153937",
+      "title": "Human",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "FR"
+            ],
+            "type": null,
+            "type-id": null,
+            "sort-name": "France",
+            "name": "France",
+            "id": "08310658-51eb-3801-80de-5a0739207115",
+            "disambiguation": ""
+          },
+          "date": "2008-02-21"
+        }
+      ],
+      "quality": "normal",
+      "date": "2008-02-21",
+      "country": "FR"
+    },
+    {
+      "id": "57a62d0f-3b07-4a73-b8ed-a19cf3ddaa29",
+      "cover-art-archive": {
+        "count": 1,
+        "back": false,
+        "darkened": false,
+        "artwork": true,
+        "front": true
+      },
+      "disambiguation": "",
+      "packaging-id": "119eba76-b343-3e02-a292-f0f00644bb9b",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "status": "Official",
+      "barcode": "",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "asin": "B000YPB1EA",
+      "packaging": "None",
+      "title": "Live at Sonic: Oct.05.2006",
+      "release-events": [
+        {
+          "date": "2006-11-20",
+          "area": {
+            "type": null,
+            "type-id": null,
+            "sort-name": "France",
+            "iso-3166-1-codes": [
+              "FR"
+            ],
+            "disambiguation": "",
+            "name": "France",
+            "id": "08310658-51eb-3801-80de-5a0739207115"
+          }
+        }
+      ],
+      "country": "FR",
+      "date": "2006-11-20",
+      "quality": "normal"
+    },
+    {
+      "status": "Official",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": null,
+      "disambiguation": "24Bits Extended and remastered version",
+      "cover-art-archive": {
+        "count": 1,
+        "back": false,
+        "artwork": true,
+        "darkened": false,
+        "front": true
+      },
+      "id": "c1e4ec03-8e61-43c2-9f2d-75654d8d189f",
+      "asin": null,
+      "packaging": null,
+      "text-representation": {
+        "script": null,
+        "language": null
+      },
+      "barcode": "",
+      "release-events": [
+        {
+          "date": "2018-06-08",
+          "area": null
+        }
+      ],
+      "title": "Human",
+      "quality": "normal",
+      "date": "2018-06-08",
+      "country": null
+    }
+  ]
+}

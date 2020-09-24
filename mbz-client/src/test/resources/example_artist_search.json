@@ -1,0 +1,581 @@
+{
+  "created": "2020-10-09T18:40:04.829Z",
+  "count": 26,
+  "offset": 0,
+  "artists": [
+    {
+      "id": "49a5f5b9-44f3-4db2-a9a8-db8773de4edc",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 100,
+      "name": "Asura",
+      "sort-name": "Asura",
+      "country": "FR",
+      "area": {
+        "id": "08310658-51eb-3801-80de-5a0739207115",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "France",
+        "sort-name": "France",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "psychedelic trance, ambient",
+      "life-span": {
+        "begin": "1996",
+        "ended": null
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "psy-trance"
+        },
+        {
+          "count": 1,
+          "name": "psytrance"
+        },
+        {
+          "count": 1,
+          "name": "electronic"
+        },
+        {
+          "count": 3,
+          "name": "ambient"
+        },
+        {
+          "count": 1,
+          "name": "ambient house"
+        },
+        {
+          "count": 1,
+          "name": "downtempo"
+        },
+        {
+          "count": 1,
+          "name": "psychill"
+        },
+        {
+          "count": 1,
+          "name": "psy-chill"
+        }
+      ]
+    },
+    {
+      "id": "15612ed2-e0a8-4e2a-87e9-5d70a68c686f",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 96,
+      "name": "Asura",
+      "sort-name": "Asura",
+      "disambiguation": "Los Angeles-based electronic artist Ryan York",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "5beae1e8-0fb6-4cca-b171-5fd6bbb1629f",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 95,
+      "name": "Asura",
+      "sort-name": "Asura",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "United States grindcore",
+      "life-span": {
+        "begin": "2010-05",
+        "ended": null
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "united states"
+        },
+        {
+          "count": 1,
+          "name": "grindcore"
+        }
+      ]
+    },
+    {
+      "id": "a10a4e53-5ab0-40b7-86b4-33f96236eb7b",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 95,
+      "name": "Asura",
+      "sort-name": "Asura",
+      "disambiguation": "drum and bass artist",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "5f660638-8db5-449c-8e2a-f4423d07ee28",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 94,
+      "name": "Asura",
+      "sort-name": "Asura",
+      "gender": "male",
+      "country": "FR",
+      "area": {
+        "id": "08310658-51eb-3801-80de-5a0739207115",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "France",
+        "sort-name": "France",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "Asura, signed to Refracted Records (Also from France)",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "357c8d83-edda-4406-a39d-2c05f2c28f94",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "name": "阿修羅",
+      "sort-name": "Asura",
+      "gender": "male",
+      "country": "JP",
+      "area": {
+        "id": "2db42837-c832-3c27-b4a3-08198f75693c",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Japan",
+        "sort-name": "Japan",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      },
+      "aliases": [
+        {
+          "sort-name": "Kitamura, Ryo",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Ryo Kitamura",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Asura",
+          "type-id": "1937e404-b981-3cb7-8151-4c86ebfc8d8e",
+          "name": "Asura",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "a079626a-2af7-4a0c-a493-a33649ac00be",
+      "score": 69,
+      "name": "Kelvinated Bionic Asura",
+      "sort-name": "Kelvinated Bionic Asura",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "bf8a0063-ad21-40b6-96c1-e1026c9c0d33",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 42,
+      "name": "Immeasurable",
+      "sort-name": "Immeasurable",
+      "area": {
+        "id": "26e0e534-19ea-4645-bfb3-1aa4e83a4046",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Atlanta",
+        "sort-name": "Atlanta",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "gospel artists",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "46b1d91f-57f5-46ad-bf1c-a8bffc132f38",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 42,
+      "name": "Basura",
+      "sort-name": "Basura",
+      "country": "ES",
+      "area": {
+        "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Spain",
+        "sort-name": "Spain",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "begin-area": {
+        "id": "b93b176e-1d08-42ee-a12c-84d774d1f463",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Errenteria",
+        "sort-name": "Errenteria",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "Spanish punk band, 1981-2007",
+      "life-span": {
+        "begin": "1981",
+        "end": "2007",
+        "ended": true
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "punk"
+        }
+      ]
+    },
+    {
+      "id": "eea45a9b-ae72-461c-b5f1-ff1de088f4ea",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Basura",
+      "sort-name": "Basura",
+      "country": "ES",
+      "area": {
+        "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Spain",
+        "sort-name": "Spain",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "electronic duo with Genís Segarra",
+      "life-span": {
+        "ended": null
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "electronic"
+        }
+      ]
+    },
+    {
+      "id": "a5269fef-da68-4cbc-aa9e-0774116faa3a",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Basura",
+      "sort-name": "Basura",
+      "country": "ES",
+      "area": {
+        "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Spain",
+        "sort-name": "Spain",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "begin-area": {
+        "id": "12c3b82e-fcab-4219-9bd5-792089d8280e",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Barcelona",
+        "sort-name": "Barcelona",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "Spanish punk band, 1977-1978",
+      "life-span": {
+        "begin": "1977",
+        "end": "1978",
+        "ended": true
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "punk"
+        }
+      ]
+    },
+    {
+      "id": "43bac34b-99bb-445e-8b21-cec7530dbd82",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Krasura",
+      "sort-name": "Krasura",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "b40b272f-a5e4-4b78-a48f-449b2e0a7397",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Basural",
+      "sort-name": "Basural",
+      "area": {
+        "id": "5eec57dc-9046-4aaa-bb79-464a5eb401ff",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Coquimbo",
+        "sort-name": "Coquimbo",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "stoner punk duo from Coquimbo, Chile",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "c52702ca-f865-4c81-8f18-4cec01747a51",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 41,
+      "name": "SuryaAsura",
+      "sort-name": "SuryaAsura",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "c122ef47-4330-4e46-8929-799f814df4c6",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "La Basura del Diablo",
+      "sort-name": "La Basura del Diablo",
+      "area": {
+        "id": "2412f885-2939-44dc-ac6a-7c1275052c5c",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Knoxville",
+        "sort-name": "Knoxville",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "begin-area": {
+        "id": "2412f885-2939-44dc-ac6a-7c1275052c5c",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Knoxville",
+        "sort-name": "Knoxville",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "begin": "2010-10",
+        "ended": null
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "horror punk"
+        }
+      ]
+    },
+    {
+      "id": "e9de6324-6336-4b80-90be-4dfe99cc926b",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Parasuram Radha",
+      "sort-name": "Radha, Parasuram",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "07e3ab3a-c380-4cba-86cc-aad678f05c3a",
+      "score": 41,
+      "name": "Basura Blanca",
+      "sort-name": "Basura Blanca",
+      "country": "NZ",
+      "area": {
+        "id": "8524c7d9-f472-3890-a458-f28d5081d9c4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "New Zealand",
+        "sort-name": "New Zealand",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "New Zealand punk",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "e6619f1f-7a13-4f26-80f3-9b87f779e6cc",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "La Misma Basura",
+      "sort-name": "La Misma Basura",
+      "life-span": {
+        "begin": "2005-02-27",
+        "ended": null
+      }
+    },
+    {
+      "id": "3d57a55c-1427-450b-8f2a-af28d9799775",
+      "score": 41,
+      "name": "Basura oscura",
+      "sort-name": "Basura oscura",
+      "area": {
+        "id": "1faa5690-6a98-43d9-aeff-10ae4be13df9",
+        "type": "Subdivision",
+        "type-id": "fd3d44c5-80a1-3842-9745-2c4972d35afa",
+        "name": "Santo Domingo",
+        "sort-name": "Santo Domingo",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "0ab74c40-9ed8-41d7-9fd4-ff656dcae27f",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Banda Basura",
+      "sort-name": "Banda Basura",
+      "country": "BE",
+      "area": {
+        "id": "5b8a5ee5-0bb3-34cf-9a75-c27c44e341fc",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Belgium",
+        "sort-name": "Belgium",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "disambiguation": "Belgian group",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "f523c216-e477-4baf-9678-3950b0d22fd8",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 41,
+      "name": "Sriram Parasuram",
+      "sort-name": "Parasuram, Sriram",
+      "gender": "male",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "d40641e5-81fc-4648-a227-f1964bc04d9d",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 41,
+      "name": "Ricky Rasura",
+      "sort-name": "Rasura, Ricky",
+      "gender": "male",
+      "area": {
+        "id": "1f40c6e1-47ba-4e35-996f-fe6ee5840e62",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Los Angeles",
+        "sort-name": "Los Angeles",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "da3c074a-17a4-4736-b9e2-dca48b1ca808",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 40,
+      "name": "El Ataque de la Basura Radioactiva",
+      "sort-name": "Ataque de la Basura Radioactiva, el",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "c6f5717a-c546-4714-a17b-fa8af8868c7c",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "name": "Kipkemo Arap Ngasura",
+      "sort-name": "Ngasura, Kipkemo Arap",
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "435ea347-d90c-438d-bfb6-1e1e4c922125",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 38,
+      "name": "安楽岡由美子",
+      "sort-name": "Yasuraoka, Etsuko",
+      "gender": "male",
+      "country": "JP",
+      "area": {
+        "id": "2db42837-c832-3c27-b4a3-08198f75693c",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Japan",
+        "sort-name": "Japan",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    }
+  ]
+}

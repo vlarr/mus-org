@@ -19,6 +19,8 @@
         <module>redis-init-ws</module>
         <module>sqlite-lib</module>
         <module>rmi-processor</module>
+        <module>mbz-client</module>
+        <module>mbz-test-app</module>
     </modules>
 
     <properties>

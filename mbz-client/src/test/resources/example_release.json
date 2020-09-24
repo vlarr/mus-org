@@ -1,0 +1,41 @@
+{
+  "release-events": [
+    {
+      "date": "2013-02-11",
+      "area": {
+        "name": "France",
+        "id": "08310658-51eb-3801-80de-5a0739207115",
+        "disambiguation": "",
+        "iso-3166-1-codes": [
+          "FR"
+        ],
+        "type": null,
+        "type-id": null,
+        "sort-name": "France"
+      }
+    }
+  ],
+  "title": "Human | Live Nuit Hypnotique #4",
+  "country": "FR",
+  "quality": "normal",
+  "date": "2013-02-11",
+  "cover-art-archive": {
+    "darkened": false,
+    "artwork": true,
+    "front": true,
+    "count": 1,
+    "back": false
+  },
+  "id": "4f9ea317-f23b-4138-851a-b5034b6efa69",
+  "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+  "status": "Official",
+  "packaging-id": "119eba76-b343-3e02-a292-f0f00644bb9b",
+  "disambiguation": "",
+  "barcode": "",
+  "asin": null,
+  "packaging": "None",
+  "text-representation": {
+    "language": "eng",
+    "script": "Latn"
+  }
+}
