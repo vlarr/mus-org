@@ -2,15 +2,12 @@ package ru.vlarp.musorg.dip.logic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.test.context.junit4.SpringRunner;
 import ru.vlarp.musorg.commons.pojo.RmiMessage;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
 
@@ -18,19 +15,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.spy;
 
 @Slf4j
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class AppLogicTest {
-    @TestConfiguration
-    @Import(AppLogic.class)
-    static class TestContextConfiguration {
-        @MockBean
-        public RabbitTemplate rabbitTemplate;
-    }
+    public AppLogic appLogic = spy(new AppLogic());
 
-    @Autowired
-    private AppLogic appLogic;
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void processDeezerTracksPartTest() throws IOException {

@@ -9,7 +9,7 @@
 - парсинга данных с плейлиста deezer
  
 Использует заранее подготовленную SQLite базу данных (`.\local\sqlite_db\mus.db`) и
- сеть (`mus-org-bridge-network`: `driver: bridge`, `subnet: 10.5.0.0/16`) для запуска.
+ сеть (`mus-org-bridge-network`: `driver: bridge`, `subnet: 10.6.0.0/16`) для запуска.
 
 ## Запуск
 
