@@ -33,8 +33,7 @@ public class JsonUtils {
 
     public static <T> List<T> fromJsonList(Class<T> type, String json) {
         try {
-            return OBJECT_MAPPER.readValue(
-                    json, OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, type));
+            return OBJECT_MAPPER.readValue(json, OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, type));
         } catch (IOException e) {
             log.warn("JSON error.", e);
             throw new RuntimeException(e);

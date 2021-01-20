@@ -1,0 +1,33 @@
+version: "3"
+services:
+  rtic:
+    build:
+      context: ../raw-track-info-consumer
+    volumes:
+      - ../local/sqlite_db:/sqlite_db
+    networks:
+      musorg-bridge:
+        ipv4_address: ${RTIC_ADDR}
+    environment:
+      - RMQ_ADDR=${RMQ_ADDR}
+      - REDIS_ADDR=${REDIS_ADDR}
+      - RMQ_USERNAME=${RMQ_USERNAME}
+      - RMQ_PASSWORD=${RMQ_PASSWORD}
+
+  riws:
+    build:
+      context: ../redis-init-ws
+    volumes:
+      - ../local/sqlite_db:/sqlite_db
+    networks:
+      musorg-bridge:
+        ipv4_address: ${RIWS_ADDR}
+    environment:
+      - REDIS_ADDR=${REDIS_ADDR}
+    ports:
+      - 8086:8080
+
+networks:
+  musorg-bridge:
+    external:
+      name: mus-org-bridge-network

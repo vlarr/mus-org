@@ -1,16 +1,16 @@
-function successSendRawTrackInfo(data) {
-    console.log("success SendRawTrackInfo", data)
+function successParseTrackInfo(data) {
+    console.log("success ParseTrackInfo", data)
 
     if ("artist" in data) {
-        $("#artistText").val(data["artist"])
+        $("#artistNameText").val(data["artist"])
     }
 
     if ("title" in data) {
-        $("#titleText").val(data["title"])
+        $("#trackTitleText").val(data["title"])
     }
 }
 
-function sendRawTrackInfo() {
+function tryParseTrackInfo() {
     let rawStr = $("#rawTrackText").val()
 
     if (!rawStr) {
@@ -19,33 +19,28 @@ function sendRawTrackInfo() {
 
     $.ajax({
         'type': 'POST',
-        'url': "/consumeRawTrackInfo",
+        'url': "/tryParseTrackInfo",
         'contentType': 'text/plain',
         'data': rawStr,
         'dataType': 'json',
-        'success': successSendRawTrackInfo
+        'success': successParseTrackInfo
     });
-}
-
-function successGetLastTracks(data) {
-    $("#send-feedback").html(new Date().toLocaleString() + " @ " + JSON.stringify(data));
 }
 
 function successSendTrackInfo(data) {
     console.log("success send:", data);
-    $.ajax({
-        'type': 'POST',
-        'url': "/lastTrackInfos",
-        'contentType': 'application/json',
-        'data': '1',
-        'dataType': 'json',
-        'success': successGetLastTracks
-    });
+    $("#send-feedback").html(new Date().toLocaleString() + " @ " + JSON.stringify(data));
+}
+
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
 }
 
 function sendTrackInfo() {
-    let artist = $("#artistText").val();
-    let title = $("#titleText").val();
+    let artistName = $("#artistNameText").val();
+    let albumTitle = $("#albumTitleText").val();
+    let trackTitle = $("#trackTitleText").val();
+    let tags = $("#tagsText").val();
 
     let sources = "";
 
@@ -59,12 +54,19 @@ function sendTrackInfo() {
 
     sources = sources.slice(1);
 
-    let jsonStr = JSON.stringify([{artist: artist, title: title, sources: sources}]);
+    let message = {artist: artistName, album: albumTitle, track: trackTitle, sources: sources, tags: tags};
+
+    let jsonStr = JSON.stringify(message, (key, value) => {
+        if (/\S+/.test(value)) {
+            return value;
+        }
+    });
+
     console.log(jsonStr);
 
     $.ajax({
         'type': 'POST',
-        'url': "/consumeTrackInfos",
+        'url': "/saveRawTrackInfo",
         'contentType': 'application/json',
         'data': jsonStr,
         'dataType': 'json',

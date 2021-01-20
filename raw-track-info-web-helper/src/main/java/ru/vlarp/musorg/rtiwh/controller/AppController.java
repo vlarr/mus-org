@@ -1,78 +1,58 @@
 package ru.vlarp.musorg.rtiwh.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.client.RestTemplate;
-import ru.vlarp.musorg.commons.dao.RawTrackDao;
-import ru.vlarp.musorg.commons.pojo.ParseTrackInfoResult;
-import ru.vlarp.musorg.commons.pojo.RawTrack;
-import ru.vlarp.musorg.commons.pojo.TrackInfo;
-
-import java.util.List;
+import ru.vlarp.musorg.commons.pojo.RmiMessage;
+import ru.vlarp.musorg.commons.utils.JsonUtils;
+import ru.vlarp.musorg.rmql.utils.TopicNameList;
+import ru.vlarp.musorg.rtiwh.logic.AppLogic;
+import ru.vlarp.musorg.rtiwh.pojo.ParseTrackInfoResult;
 
 @Controller
+@Slf4j
 public class AppController {
-    private static final Logger log = LoggerFactory.getLogger(AppController.class);
-
-    //    @Value("${tic.server.port}")
-    private static final Integer TIC_PORT = 8080;
-
-    @Value("${TIC_ADDRESS}")
-    private String ticAddress;
-
-    private RestTemplateBuilder restTemplateBuilder;
-
-    private RawTrackDao rawTrackDao;
+    private AppLogic appLogic;
+    private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public void setRestTemplateBuilder(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplateBuilder = restTemplateBuilder;
+    public void setAppLogic(AppLogic appLogic) {
+        this.appLogic = appLogic;
     }
 
     @Autowired
-    public void setRawTrackDao(RawTrackDao rawTrackDao) {
-        this.rawTrackDao = rawTrackDao;
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
-    @PostMapping(path = "/consumeRawTrackInfo", consumes = "text/plain", produces = "application/json")
-    public ResponseEntity<ParseTrackInfoResult> remoteConsumeRawTrackInfo(@RequestBody String rawTrackInfo) {
-        log.info("call consumeRawTrackInfo. rawTrackInfo={}", rawTrackInfo);
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        String ticUrl = String.format("http://%s:%d/tryParseTrackInfo", ticAddress, TIC_PORT);
+    @PostMapping(path = "/tryParseTrackInfo", consumes = "text/plain", produces = "application/json")
+    public ResponseEntity<ParseTrackInfoResult> tryParseTrackInfoString(@RequestBody String rawTrackInfo) {
+        try {
+            ParseTrackInfoResult result = appLogic.tryParseTrackInfo(rawTrackInfo);
+            return ResponseEntity
+                    .status(result != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST)
+                    .body(result);
 
-        return restTemplate.postForEntity(
-                ticUrl,
-                new HttpEntity<>(rawTrackInfo),
-                ParseTrackInfoResult.class
-        );
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 
-    @PostMapping(path = "/consumeTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Boolean[]> remoteConsumeTrackInfos(@RequestBody List<TrackInfo> trackInfo) {
-        log.info("call consumeTrackInfos. trackInfo={}", trackInfo);
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        String ticUrl = String.format("http://%s:%d/consumeTrackInfos", ticAddress, TIC_PORT);
+    @PostMapping(path = "/saveRawTrackInfo", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<RmiMessage> saveRawTrackInfo(@RequestBody RmiMessage rmiMessage) {
+        log.info("call consumeTrackInfos. rmiMessage={}", rmiMessage);
 
-        return restTemplate.postForEntity(
-                ticUrl,
-                new HttpEntity<>(trackInfo),
-                Boolean[].class
-        );
-    }
-
-    @PostMapping(path = "/lastTrackInfos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<RawTrack>> getLastTrackInfoByLimit(@RequestBody Integer trackLimit) {
-        log.info("call lastTrackInfos. trackLimit={}", trackLimit);
-
-        //todo убрать прямое чтение
-        return ResponseEntity.ok(rawTrackDao.findLast(trackLimit));
+        try {
+            rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rmiMessage));
+            return ResponseEntity.ok(rmiMessage);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 }
