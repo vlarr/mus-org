@@ -35,6 +35,10 @@ public class AppController {
             playlistName = "DEEZER_MISC";
         }
 
-        return appLogic.processDeezerPlaylist(playlistId, playlistName) == 0 ? "OK" : "ERROR";
+        try {
+            return appLogic.processDeezerPlaylist(playlistId, playlistName) == 0 ? "OK" : "ERROR";
+        } catch (InterruptedException ex) {
+            return "ERROR";
+        }
     }
 }

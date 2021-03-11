@@ -1,6 +1,5 @@
 package ru.vlarp.musorg.sqltl.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ public class MusSourceConfig {
     }
 
     @Bean
-    public JdbcTemplate musJdbcTemplate(@Autowired DataSource musDataSource) {
+    public JdbcTemplate musJdbcTemplate(DataSource musDataSource) {
         return new JdbcTemplate(musDataSource);
     }
 }
