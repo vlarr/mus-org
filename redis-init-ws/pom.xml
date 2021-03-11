@@ -5,7 +5,7 @@
     <parent>
         <artifactId>musorg-parent</artifactId>
         <groupId>ru.vlarp.musorg</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>ru.vlarp.musorg</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>rti-commons</artifactId>
             <version>1.2.0</version>
         </dependency>
         <dependency>

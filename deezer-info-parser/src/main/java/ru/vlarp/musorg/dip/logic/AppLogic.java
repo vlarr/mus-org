@@ -5,7 +5,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.vlarp.musorg.commons.pojo.RmiMessage;
+import ru.vlarp.musorg.commons.pojo.RtiMessage;
 import ru.vlarp.musorg.commons.utils.JsonUtils;
 import ru.vlarp.musorg.dip.pojo.DeezerTrack;
 import ru.vlarp.musorg.dip.pojo.DeezerTracks;
@@ -25,11 +25,11 @@ public class AppLogic {
     }
 
     int processDeezerTracksPart(DeezerTracks response, String playlistName,
-                                List<RmiMessage> resultRawTrackInfoList) {
+                                List<RtiMessage> resultRawTrackInfoList) {
         if (response.data != null) {
             for (DeezerTrack track : response.data) {
                 resultRawTrackInfoList.add(
-                        RmiMessage
+                        RtiMessage
                                 .builder()
                                 .artist((track.artist != null) ? track.artist.name : null)
                                 .album((track.album != null) ? track.album.title : null)
@@ -45,32 +45,30 @@ public class AppLogic {
         }
     }
 
-    public Integer processDeezerPlaylist(Long playlistId, String playlistName) {
+    public Integer processDeezerPlaylist(Long playlistId, String playlistName) throws InterruptedException {
         RestTemplate restTemplate = new RestTemplate();
 
-        List<RmiMessage> resultRawTrackInfoList = new ArrayList<>();
+        List<RtiMessage> resultRawTrackInfoList = new ArrayList<>();
 
         int totalCount = 0;
         DeezerTracks response = null;
-        try {
-            do {
-                String next = (response == null) ? String.format("https://api.deezer.com/playlist/%d/tracks", playlistId) : response.next;
-                response = restTemplate.getForObject(next, DeezerTracks.class);
-                if (response == null) {
-                    break;
-                }
 
-                int processedTracks = processDeezerTracksPart(response, playlistName, resultRawTrackInfoList);
-                totalCount += processedTracks;
-                log.info("totalCount:{}, count:{}", totalCount, processedTracks);
+        do {
+            String next = (response == null) ? String.format("https://api.deezer.com/playlist/%d/tracks", playlistId) : response.next;
+            response = restTemplate.getForObject(next, DeezerTracks.class);
+            if (response == null) {
+                break;
+            }
 
-                Thread.sleep(100L); // ограничение на 50 запросов в секунду, минимум 20 мсек между запросами. Установлено 100 мсек чтобы наверняка
-            } while (response.next != null);
-        } catch (InterruptedException ex) {
-            return 1;
-        }
+            int processedTracks = processDeezerTracksPart(response, playlistName, resultRawTrackInfoList);
+            totalCount += processedTracks;
+            log.info("totalCount:{}, count:{}", totalCount, processedTracks);
 
-        for (RmiMessage rawTrackInfo : resultRawTrackInfoList) {
+            Thread.sleep(100L); // ограничение на 50 запросов в секунду, минимум 20 мсек между запросами. Установлено 100 мсек чтобы наверняка
+        } while (response.next != null);
+
+
+        for (RtiMessage rawTrackInfo : resultRawTrackInfoList) {
             rabbitTemplate.convertAndSend(TopicNameList.RAW_TRACK_INFO, JsonUtils.toJSON(rawTrackInfo));
         }
         return 0;
